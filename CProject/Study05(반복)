@@ -1,0 +1,78 @@
+//
+//  Study05(반복).cpp
+//  CProject
+//
+//  Created by 오나현 on 11/20/24.
+//
+
+/// [2024.11.20]
+
+/*
+#include <stdio.h>
+
+/// 반복문1; for문
+int main()
+{
+    int a = 0;
+    
+    //printf("반복 %d\n", ++a);
+    //printf("반복 %d\n", ++a);
+    //printf("반복 %d\n", ++a);
+    //printf("반복 %d\n", ++a);
+    //printf("반복 %d\n", ++a);
+    
+    for (int i = 0; i < 10; i++) // 초기식; 조건식; 증감식
+    {
+        printf("반복 %d\n", i);   // 반복된 내용
+    }
+}
+    
+/// [과제] 구구단
+/// for 문을 이용해서 구구단을 출력하자.
+int main()
+{
+    int a = 0;
+    printf("<< 구구단 시작 >>\n");
+    printf("몇 단을 출력할까요? : ");
+    scanf("%d", &a);
+    
+    for (int i = 1; i < 10; i++)
+    {
+        printf("%d X %d = %d\n", a, i, a*i);
+    }
+    
+    return 0;
+}
+
+/// 반복문2; while문
+int main()
+{
+    int i = 1;
+    int input = 0;
+    scanf("%d", &input);
+    
+    while(i < 10)    // 참(1 = 무한반복), 거짓(0) 체크
+    {
+        printf("%d X %d = %d\n", input, i, input*i);
+        i++;
+    }
+    
+    return 0;
+}
+
+/// 반복문3; do-while문
+int main()
+{
+    int i = 1;
+    int input = 0;
+    scanf("%d", &input);
+    
+    do // 조건 확인 전 무조건 한 번은 돌아간다.
+    {
+        printf("%d X %d = %d\n", input, i, input*i);
+        i++;
+    } while(0);
+    
+    return 0;
+}
+ */
