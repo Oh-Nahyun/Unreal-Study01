@@ -1,0 +1,14 @@
+//
+//  Study07(문자출력).cpp
+//  CProject
+//
+//  Created by 오나현 on 11/21/24.
+//
+
+#include <stdio.h>
+
+/// 문자 출력
+int main()
+{
+    return 0;
+}
