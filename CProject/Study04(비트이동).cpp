@@ -26,14 +26,12 @@ int main()
     unsigned int b2 = 1 << 8;        // 0000 0000 0000 0000 0000 0000 0000 0001 => 0000 0000 0000 0000 0000 0001 0000 0000
     printf("a2 : %d\n", a2);
     printf("b2 : %d\n", b2);
+ 
+     a = 4 >> 1;             // 0000 1000
+     b = 8 >> 2;             // 0010 0000
+     printf("a : %d\n", a); // 2
+     printf("b : %d\n", b); // 2
     
     return 0;
 }
  */
-
-#include <stdio.h>
-
-int main()
-{
-    return 0;
-}
