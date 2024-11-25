@@ -7,8 +7,81 @@
 
 #include <stdio.h>
 
+/*
 /// 문자 출력
 int main()
 {
+    // 아스키 코드를 사용하기 위해 1바이트여서 char을 사용하는 것이지 문자의 자료형이 char인 것은 아니다!!!
+    // 한글은 2바이트이기 때문에 char형을 사용할 수 없다. (char arrCh[201]; 이런식으로 가능)
+    
+    char ch = 'a';          // 아스키코드 상으로 a는 97이다.
+    printf("%d\n", ch);     // 숫자 (a와 매칭되는 97)
+    printf("%c\n", ch);     // 문자 출력
+    
     return 0;
 }
+
+/// 변수에 여러 글자 담기
+int main()
+{
+    char ch[5] = "abcd"; ///// char ch[4] = "abcd"; 에러?
+    //printf("%d\n", ch);   // (에러)
+    //printf("%c\n", ch);   // (에러)
+    printf("%s\n", ch);     // 여러 문자 출력
+    
+    return 0;
+}
+
+/// 문장의 끝
+int main()
+{
+    // 문장의 끝은 항상 0(, 혹은 \0, NULL, null)이다.
+    char ch[7] = {'a', 'b', 'c', 'd', 0, 'e', 'f'};
+    printf("%s\n", ch);
+    
+    return 0;
+}
+
+/// 문자 입력 받기
+/// (scanf_s는 윈도우 환경, 즉, Visual Studio에서만 사용 가능한 명령어이다.)
+int main()
+{
+    // 한글자만 입력 받기
+    char ch;
+    printf("한글자만 입력해주세요 : ");
+    scanf("%c", &ch);
+    printf("%c\n", ch);
+    
+    // 여러 문자 입력 받기
+    char arrCh[201];
+    printf("200자 이내로 입력해주세요 : ");
+    scanf("%s", &arrCh, 201);
+    //scanf("%s", &arrCh);                      // 비추천!!
+    //scanf_s("%s", &arrCh, 201);               // HardCoding
+    //scanf_s("%s", &arrCh, sizeof(arrCh));     // 보안적으로 sizeof(arrCh) 추가 추천!!!
+    printf("%s\n", arrCh);
+    
+    return 0;
+}
+
+/// [예제] 문자열의 길이 구하기
+/// 1. 30자 이내의 문자열을 입력 받고, 문자열의 길이를 출력하는 프로그램을 만들자.
+/// 힌트 : 문자열의 끝에는 NULL(0)이 들어간다는 것을 이용해라.
+int main()
+{
+    // 문자열 생성 + 초기화
+    char chArr[31] = {};
+    printf("30자 이내의 문자열을 입력해주세요 : ");
+    scanf("%s", &chArr, sizeof(chArr));
+    
+    // 문자열의 길이 값 변수
+    int length = 0;
+    for (int i = 0; chArr[i] != 0; i++)
+    {
+        length++;
+    }
+    printf("문자열의 길이 : %d\n", length);
+    
+    return 0;
+}
+ */
