@@ -1,0 +1,68 @@
+//
+//  Study08(이중반복문).cpp
+//  CProject
+//
+//  Created by 오나현 on 11/22/24.
+//
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+/*
+/// 이중반복문을 사용하는 이유는 이차원(이차배열)을 표현하기 위함이다.
+/// 화면의 좌표, 캐릭터의 위치 등에 사용된다.
+
+/// 이중반복문
+int main()
+{
+    for (int i = 0; i < 3; i++) // y
+    {
+        printf("-- 바깥쪽 for문 시작 --\n");
+        printf("[i : %d]\n", i);
+        
+        for (int j = 0; j < 3; j++) // x
+        {
+            printf("[안쪽 for문의 j : %d]\n", j);
+        }
+    }
+    
+    return 0;
+}
+
+/// [문제]
+/// 이중반복문을 이용하여 0부터 5까지의 숫자를 출력하는 코드를 3번 반복하자.
+int main()
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 6; j++)
+        {
+            printf("%d ", j);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+ */
+
+/// [실습]
+/// 직각삼각형 만들기
+/// 입력받은 n만큼 높이를 가지고 있는 직각삼각형을 만들어보자.
+int main()
+{
+    int num = 0;
+    printf("직각삼각형의 높이를 입력해주세요 : ");
+    scanf("%d", &num);
+    
+    for (int i = 1; i <= num; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
