@@ -44,7 +44,6 @@ int main()
     
     return 0;
 }
- */
 
 /// [실습]
 /// 직각삼각형 만들기
@@ -66,3 +65,71 @@ int main()
     
     return 0;
 }
+
+/// 직각 역삼각형 만들기
+/// 입력받은 n만큼 높이를 가지고 있는 직각 역삼각형을 만들어보자.
+int main()
+{
+    int num = 0;
+    printf("직각삼각형의 높이를 입력해주세요 : ");
+    scanf("%d", &num);
+    
+    for (int i = num; i > 0; i--)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+
+/// 다양한 증감 조건
+int main()
+{
+    int num = 0;
+    printf("직각삼각형의 높이를 입력해주세요 : ");
+    scanf("%d", &num);
+    
+    for (int i = 1; i <= num; i++)
+    {
+        for (int j = 0; j < i * 2; j++)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+
+/// [과제]
+/// 피라미드 출력하기
+int main()
+{
+    int count = 1;
+    int num = 0;
+    printf("피라미드의 높이를 입력해주세요 : ");
+    scanf("%d", &num);
+    
+    for (int i = num; i > 0; i--)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            printf(" ");
+        }
+        
+        for (int r = 0; r < count; r++) // [아이디어2] count 부분을 i * 2처럼 바꿔도 된다.
+        {
+            printf("*");
+        }
+        
+        count += 2;
+        printf("\n");
+    }
+    
+    return 0;
+}
+ */
