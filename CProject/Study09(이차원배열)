@@ -1,0 +1,60 @@
+//
+//  Study09(이차원배열).cpp
+//  CProject
+//
+//  Created by 오나현 on 11/25/24.
+//
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+/*
+/// 이차원배열
+int main()
+{
+    int arr[5] = {1,2,3,4,5};   // 선언과 동시에 초기화
+    
+    int tableArr[2][3];         // (y, x)의 형태
+    int tableArr2[2][3] = {{00,01,02}, {10,11,12}};
+    
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf("%d, ", tableArr2[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+
+/// 이차원 배열의 입력과 출력 (숫자)
+int main()
+{
+    int tArr[2][3] = {};
+    
+    // 입력 (이중 for문)
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf("tArr[%d][%d] 입력 : ", i, j);
+            scanf("%d", &tArr[i][j]);
+        }
+    }
+    printf("\n");
+    
+    // 출력
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf("%d, ", tArr[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+ */
