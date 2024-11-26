@@ -72,7 +72,6 @@ int main()
     
     return 0;
 }
- */
 
 /// 두가지 조건 동시에 판별하기
 int main()
@@ -100,3 +99,143 @@ int main()
     
     return 0;
 }
+
+/// break (반복문 & 조건문에서 사용)
+int main()
+{
+    int i = 0;
+    int num = 5;
+    
+    while (true)
+    {
+        printf("%d ", i);
+        
+        if (i == num)
+        {
+            break;
+            printf("\n 반복문을 빠져나가자!"); // 이 문장은 출력되지 않는다.
+        }
+        
+        i++;
+    }
+    
+    return 0;
+}
+
+/// continue (반복문 & 조건문에서 사용)
+int main()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (i % 2 == 0)
+        {
+            continue;
+        }
+        printf("%d\n", i);
+    }
+    
+    return 0;
+}
+
+/// switch문 [1]
+int main()
+{
+    int input = 0;
+    printf("1 ~ 5 사이의 값을 입력하세요. : ");
+    scanf("%d", &input);
+    
+    switch (input)  // (기준값)
+    {
+        case 1: // 비교값1
+            // 기준값과 비교값1이 같은 경우, 실행
+            printf("1의 값이 입력되었습니다.\n");
+            break;
+        case 2: // 비교값2
+            // 기준값과 비교값2이 같은 경우, 실행
+            printf("2의 값이 입력되었습니다.\n");
+            break;
+        case 3: // 비교값3
+            // 기준값과 비교값3이 같은 경우, 실행
+            printf("3의 값이 입력되었습니다.\n");
+            break;
+        case 4: // 비교값4
+            // 기준값과 비교값4이 같은 경우, 실행
+            printf("4의 값이 입력되었습니다.\n");
+            break;
+        case 5: // 비교값5
+            // 기준값과 비교값5이 같은 경우, 실행
+            printf("5의 값이 입력되었습니다.\n");
+            break;
+        default:
+            // 기준값과 모든 비교값들과 다른 경우, 실행
+            printf("범위를 벗어난 값이 입력되었습니다.\n");
+            break;
+    }
+    
+    return 0;
+}
+
+/// switch문 [2]
+int main()
+{
+    int input = 0;
+    printf("1 ~ 5 사이의 값을 입력하세요. : ");
+    scanf("%d", &input);
+    
+    switch (input)
+    {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            printf("%d의 값이 입력되었습니다.\n", input);
+            break;
+        default:
+            printf("범위를 벗어난 값이 입력되었습니다.\n");
+            break;
+    }
+    
+    return 0;
+}
+
+/// 성적 처리하기
+/// 10 ~ 7 : A학점 / 6 ~ 3 : B학점 / 2 ~ 0 : C학점
+int main()
+{
+    int input = 0;
+    while (true)
+    {
+        printf("10 ~ 0 사이의 값을 입력하세요.(종료 : 999) : ");
+        scanf("%d", &input);
+        
+        if (input == 999) break;
+        
+        switch (input)
+        {
+            case 10:
+            case 9:
+            case 8:
+            case 7:
+                printf("A학점 입니다.\n");
+                break;
+            case 6:
+            case 5:
+            case 4:
+            case 3:
+                printf("B학점 입니다.\n");
+                break;
+            case 2:
+            case 1:
+            case 0:
+                printf("C학점 입니다.\n");
+                break;
+            default:
+                printf("범위를 벗어난 값이 입력되었습니다.\n");
+                break;
+        }
+    }
+    
+    return 0;
+}
+ */
