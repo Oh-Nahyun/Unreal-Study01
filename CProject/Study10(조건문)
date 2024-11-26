@@ -1,0 +1,102 @@
+//
+//  Study10(조건문).cpp
+//  CProject
+//
+//  Created by 오나현 on 11/25/24.
+//
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+/*
+/// 조건문
+int main()
+{
+    // 참 = true = 1
+    // 거짓 = false = 0
+    
+    int num = 0;
+    printf("아무 숫자나 입력해주세요. : ");
+    scanf("%d", &num);
+    
+    if (num > 100)
+    {
+        printf("num은 100보다 큽니다.\n");
+    }
+    else if (num < 100)
+    {
+        printf("num은 100보다 작습니다.\n");
+    }
+    else
+    {
+        printf("num은 100과 같습니다.\n");
+    }
+    
+    return 0;
+}
+
+int main()
+{
+    int num = 0;
+    int exit = 1;
+    
+    while (exit) // 무한 반복
+    {
+        printf("아무 숫자나 입력해주세요. (종료하려면 999 입력하기) : ");
+        scanf("%d", &num);
+        
+        if (num == 999)  // 반복 루프 종료
+        {
+            exit = 0;   // 또는 false 넣어주기
+        }
+    }
+    
+    return 0;
+}
+
+/// 홀짝 판별하기
+int main()
+{
+    int num = 0;
+    printf("정수를 입력해주세요. : ");
+    scanf("%d", &num);
+    
+    if (num % 2 == 0)
+    {
+        printf("num은 짝수입니다.\n");
+    }
+    else
+    {
+        printf("num은 홀수입니다.\n");
+    }
+    
+    return 0;
+}
+ */
+
+/// 두가지 조건 동시에 판별하기
+int main()
+{
+    int num = 0;
+    printf("정수를 입력해주세요. : ");
+    scanf("%d", &num);
+    
+    if (num > 10 && num % 2 == 0)
+    {
+        printf("%d은 10보다 큰 짝수입니다.\n", num);
+    }
+    else if (num > 10)
+    {
+        printf("%d은 10보다 큰 홀수입니다.\n", num);
+    }
+    else if (num % 2 == 0)
+    {
+        printf("%d은 10보다 작은 짝수입니다.\n", num);
+    }
+    else
+    {
+        printf("%d은 10보다 작은 홀수입니다.\n", num);
+    }
+    
+    return 0;
+}
