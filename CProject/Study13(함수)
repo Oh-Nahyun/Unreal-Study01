@@ -1,0 +1,16 @@
+//
+//  Study13(함수).cpp
+//  CProject
+//
+//  Created by 오나현 on 11/27/24.
+//
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+    
+    
+    return 0;
+}
