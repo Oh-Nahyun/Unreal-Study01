@@ -1,0 +1,172 @@
+//
+//  Study14(포인터).cpp
+//  CProject
+//
+//  Created by 오나현 on 11/29/24.
+//
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h> // Standard Input Output
+
+/*
+/// 포인터 (*)
+/// 속도가 빠르다. & 메모리 상으로도 좋음.(?)
+/// 함수에 데이터를 전달할 때 좋다.
+
+/// [ 예시 ] 도로명 주소 = 동 주소
+/// 도로명 주소 : 서울 OO구 OO로 NN OO아파트 NN동 NN호
+/// 동 주소 : 서울 OO구 OO동 NN-NN
+int main()
+{
+    // 형식은 모두 동일
+    int *p1 = NULL;
+    int* p2 = NULL; // 권장
+    int * p3 = NULL;
+    
+    // 기본 구조
+    int num = 15;
+    p1 = &num;
+    printf("int 변수 num의 주소 : %d\n", &num); // num의 주소 (& : 레퍼런스)
+    printf("포인터 p의 값 : %d\n", p1);
+    printf("포인터 p가 가리키는 값 : %d\n", *p1); // 포인터가 가르키는 값
+    printf("num의 값 : %d\n", num);
+    
+    // scanf
+    scanf("%d", &num); // [의미] num의 주소에 입력한 정수를 넣어라
+    printf("num의 값 : %d\n", num);
+    
+    return 0;
+}
+
+/// 참조 (레퍼런스) 연산자 : *
+int main()
+{
+    int *p1 = NULL;
+    int num = 15;
+ 
+    p1 = &num;
+    
+    printf("int 변수 num의 주소 : %d\n", &num);
+    printf("포인터 p의 값 : %d\n", p1);
+    printf("포인터 p가 가리키는 값 : %d\n", *p1);
+    
+    return 0;
+}
+
+/// 사용
+int main()
+{
+    int *p1 = NULL;
+    int num = 15;
+    
+    p1 = &num;  // O
+    printf("포인터 p가 가리키는 값 : %d\n", *p1);
+    printf("num의 값 : %d\n", num);
+    
+    *p1 += 5;   // O
+    printf("포인터 p가 가리키는 값 : %d\n", *p1);
+    printf("num의 값 : %d\n", num);
+    
+    (*p1)++;    // O
+    printf("포인터 p가 가리키는 값 : %d\n", *p1);
+    printf("num의 값 : %d\n", num);
+    
+    *p1++;      // X : 증감 연산자(++, --)가 참조 연산자(*)보다 우선순위가 높다!
+                //     논리 오류 (p1++가 먼저 되고, 그 후에 *(p1++)이 된다.)
+    printf("포인터 p가 가리키는 값 : %d\n", *p1);
+    printf("num의 값 : %d\n", num);
+    
+    return 0;
+}
+
+/// 함수와의 궁합
+void numPlus(int num)
+{
+    num += 5;
+    printf("numPlus() 내 num의 값 : %d\n", num);
+}
+
+int numPlus2(int num)
+{
+    num += 5;
+    printf("numPlus2() 내 num의 값 : %d\n", num);
+    
+    return num;
+}
+
+void numPlus3(int *num)
+{
+    *num += 5;
+    printf("numPlus3() 내 num의 값 : %d\n", *num);
+}
+
+int main()
+{
+    int num = 15;
+    printf("num의 값 : %d\n\n", num);
+    
+    numPlus(num);
+    printf("numPlus() 사용 후 num의 값 : %d\n\n", num); // Call by value
+    
+    int num2 = numPlus2(num);
+    printf("numPlus2() 사용 후 num의 값 : %d\n\n", num2);
+    
+    numPlus3(&num);
+    printf("numPlus3() 사용 후 num의 값 : %d\n\n", num); // Call by reference
+    
+    return 0;
+}
+ */
+
+/*
+/// Call by value & Call by reference
+// Call by value
+void swap(int a, int b)
+{
+    int temp = 0;
+    
+    temp = a;
+    a = b;
+    b = temp;
+    
+    printf("[swap 내] a = %d, b = %d\n", a, b);
+}
+
+int main()
+{
+    int a = 10;
+    int b = 20;
+    
+    printf("[swap 전] a = %d, b = %d\n", a, b);
+    
+    swap(a, b);
+    printf("[swap 후] a = %d, b = %d\n", a, b);
+    
+    return 0;
+}
+
+// Call by reference
+void swap(int *a, int *b)
+{
+    int temp = 0;
+    
+    temp = *a;
+    *a = *b;
+    *b = temp;
+    
+    printf("[swap 내] a = %d, b = %d\n", *a, *b);
+}
+
+int main()
+{
+    int a = 10;
+    int b = 20;
+    
+    printf("[swap 전] a = %d, b = %d\n", a, b);
+    
+    swap(&a, &b);
+    printf("[swap 후] a = %d, b = %d\n", a, b);
+    
+    return 0;
+}
+ */
