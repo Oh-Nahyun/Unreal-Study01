@@ -170,3 +170,202 @@ int main()
     return 0;
 }
  */
+
+/*
+/// 실습
+/// 포인터로 자리변경하는 프로그램
+/// 1. 키가 작은 학생은 왼쪽에, 키가 큰 학생은 오른쪽에 놓는다.
+/// 2. 학생들의 키는 정수로 입력받는다.
+/// 3. 왼쪽 학생은 left, 오른쪽 학생은 right에 입력받는다.
+/// 4. 포인터를 이용해서 값을 교환해보세요.
+void swapStudent(int *left, int *right)
+{
+    if (*left > *right)
+    {
+        int temp = *left;
+        *left = *right;
+        *right = temp;
+    }
+}
+
+int main()
+{
+    int left = 0;
+    int right = 0;
+    printf("학생들의 키를 정수로 입력해주세요.\n");
+    scanf("%d %d", &left, &right);
+    
+    swapStudent(&left, &right);
+    
+    printf("왼쪽 : %d\n", left);
+    printf("오른쪽 : %d\n", right);
+    
+    return 0;
+}
+ */
+
+/*
+/// 포인터 연산 & 배열
+// 배열의 이름이 주소값이다.
+// 배열의 이름은 포인터 변수와 같은 기능을 한다.
+// 첫번째 요소의 주소값을 나타낸다.
+int main()
+{
+    int arr[5] = {10, 20, 30, 40, 50};
+    int* arrPointer = arr;
+    
+    printf("%d\n", *arrPointer);
+    printf("%d\n", arr[0]);
+    
+    return 0;
+}
+
+/// 포인터 연산
+int main()
+{
+    int arr[5] = {10, 20, 30, 40, 50};
+    double arr2[5] = {10.1, 20.2, 30.3, 40.4, 50.5};
+    
+    int* arrPointer = arr;
+    double* arrPointer2 = arr2;
+    
+    printf("포인터 주소 : %d %d\n", arrPointer++, arrPointer2++); // 후위 증가 결과 : int형은 4, double형은 8바이트 증가
+    printf("증가 연산 후 : %d %d\n", arrPointer, arrPointer2);
+    printf("변수의 값 : %d %.2f\n", *arrPointer, *arrPointer2); // '.2f'의 의미 : 소수점 두번째 자리까지 나타낸 소수
+    
+    arrPointer += 2;
+    arrPointer2 += 2; // 증가 결과 : int형은 8, double형은 16바이트 증가
+    printf("증가 연산 후 : %d %d\n", arrPointer, arrPointer2);
+    printf("변수의 값 : %d %.2f\n", *arrPointer, *arrPointer2);
+    
+    // i * 자료형의 크기 = 배열 i
+    // *(arr + i) == arr[i]
+    
+    return 0;
+}
+ */
+
+/*
+/// 포인터를 이용한 버블 정렬 (Sort)
+/// 10개의 값을 입력받아 오름차순으로 정렬하는 함수를 만든다.
+/// 포인터를 이용해서 Main에 있는 원래 배열의 값을 바꾸어야 한다.
+/// 바꾼 후 정렬된 배열을 출력한다.
+void bubbleSort(int* arr, int length)
+{
+    int temp = 0;
+    for (int i = 0; i < length - 1; i++)
+    {
+        for (int j = 0; j < length - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                temp = arr[j + 1];
+                arr[j + 1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int arr[10] = {};
+    int length = sizeof(arr) / sizeof(int);
+    
+    printf("배열에 들어갈 정수를 입력해주세요.(10개)\n");
+    printf("입력 : ");
+    for (int i = 0; i < length; i++)
+    {
+        scanf("%d ", &arr[i]);
+    }
+    
+    bubbleSort(arr, length);
+    
+    printf("출력 : ");
+    for (int i = 0; i < length; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+ */
+
+/*
+/// 상수 포인터
+int main()
+{
+    const double PI = 3.141592;
+    
+    // PI = 7; // 변경 불가
+    
+    return 0;
+}
+
+int main()
+{
+    int num = 10;
+    int* pointer1 = &num;
+    const int* pointer2 = &num;
+    
+    *pointer1 = 20;     // 변경 가능
+    num = 30;           // 변경 가능
+    // *pointer2 = 40;   // 변경 불가능
+    
+    return 0;
+}
+ */
+
+/*
+/// 포인터 상수화
+int main()
+{
+    int num1 = 10;
+    int num2 = 20;
+    
+    int* pointer1 = &num1;
+    int* const pointer2 = &num1;
+    
+    pointer1 = &num2;
+    *pointer2 = 30;
+    // pointer2 = &num2; // 주소 변경 불가능
+    
+    return 0;
+}
+
+/// 포인터 주소 변경과 값 변경 모두 안되는 경우
+int main()
+{
+    int num1 = 10;
+    int num2 = 20;
+    
+    int* pointer1 = &num1;
+    const int* const pointer2 = &num1;
+    
+    pointer1 = &num2;
+    // *pointer2 = 30;      // 값 변경 불가능
+    // pointer2 = &num2;    // 주소 변경 불가능
+    
+    return 0;
+}
+ */
+
+/// 이중 포인터와 포인터 배열
+/// 두 번 재활용을 위함 & 메모리와 빠른 속도를 위함
+/// (DirectX에서 주로 사용)
+int main()
+{
+    int num = 10;
+    int* ptr;
+    int** pptr;
+    
+    ptr = &num;
+    pptr = &ptr;
+    
+    printf("num : %d, *ptr : %d, **ptr : %d\n", num, *ptr, **pptr);
+    printf("num 주소 : %d, *ptr 값 : %d, **ptr 값 : %d\n", &num, ptr, *pptr);
+    printf("ptr 주소 : %d, pptr 값 : %d\n", &ptr, pptr);
+    
+    return 0;
+}
