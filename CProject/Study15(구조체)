@@ -1,0 +1,230 @@
+//
+//  Study15(구조체).cpp
+//  CProject
+//
+//  Created by 오나현 on 12/3/24.
+//
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+/*
+/// 구조체
+/// 선언 형식 : [구조체 선언] [구조체 이름] {구조체 멤버들};
+struct MyStruct
+{
+    
+};
+ */
+
+/*
+/// 학생 관리 프로그램
+/// 학생 이름, 학번, 나이, 전화번호
+struct Student
+{
+    char name[15];          // 캐릭터형
+    int id;
+    int age;
+    char phoneNumber[14];   // 000-0000-0000
+};
+
+int main()
+{
+    struct Student Human;       // 구조체의 변수 이름을 선언 후 사용해야 한다. (생성 시 초기화된다.)
+    struct Student Human2[100];
+    
+    printf("이름 : ");
+    scanf("%s", Human.name);    // string은 & 안써도 된다.
+    // scanf("%s", Human.name, sizeof(Human.name));
+    
+    printf("학번 : ");
+    scanf("%d", &Human.id);
+    
+    printf("나이 : ");
+    scanf("%d", &Human.age);
+    
+    printf("전화번호 : ");
+    scanf("%s", Human.phoneNumber);
+    // scanf("%s", Human.phoneNumber, sizeof(Human.phoneNumber));
+    
+    printf("==================================================\n");
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human.name, Human.id, Human.age, Human.phoneNumber);
+    
+    return 0;
+}
+
+/// 구조체 멤버의 초기화
+struct Student
+{
+    char name[15];
+    int id;
+    int age;
+    char phoneNumber[14];
+};
+
+int main()
+{
+    struct Student Human = {"홍길동", 123456789, 20, "010-1234-5678"};
+    struct Student Human2 = {"홍길동2", 123456789, 22, "010-1234-5678"};
+    
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human.name, Human.id, Human.age, Human.phoneNumber);
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human2.name, Human2.id, Human2.age, Human2.phoneNumber);
+    
+    return 0;
+}
+
+/// typedef(타입 define)를 이용한 구조체 선언
+typedef struct Student
+{
+    char name[15];
+    int id;
+    int age;
+    char phoneNumber[14];
+}StudentData; // struct Student == StudentData
+
+int main()
+{
+    //struct Student Human = {"홍길동", 123456789, 20, "010-1234-5678"};
+    //struct Student Human2 = {"홍길동2", 123456789, 22, "010-1234-5678"};
+    
+    StudentData Human = {"홍길동", 123456789, 20, "010-1234-5678"};
+    StudentData Human2 = {"홍길동2", 123456789, 22, "010-1234-5678"};
+    
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human.name, Human.id, Human.age, Human.phoneNumber);
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human2.name, Human2.id, Human2.age, Human2.phoneNumber);
+    
+    return 0;
+}
+
+/// 익명 구조체
+typedef struct
+{
+    char name[15];
+    int id;
+    int age;
+    char phoneNumber[14];
+}StudentData;
+
+int main()
+{
+    StudentData Human = {"홍길동", 123456789, 20, "010-1234-5678"};
+    StudentData Human2 = {"홍길동2", 123456789, 22, "010-1234-5678"};
+    
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human.name, Human.id, Human.age, Human.phoneNumber);
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human2.name, Human2.id, Human2.age, Human2.phoneNumber);
+    
+    return 0;
+}
+
+/// 구조체 배열
+typedef struct
+{
+    char name[15];
+    int id;
+    int age;
+    char phoneNumber[14];
+}StudentData;
+
+int main()
+{
+    StudentData Human[3] = {{"홍길동"}, {"홍길동2"}, {"홍길동3"}};
+    
+    Human[0].age = 20;
+    Human[1].age = 21;
+    Human[2].age = 22;
+    
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human[0].name, Human[0].id, Human[0].age, Human[0].phoneNumber);
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human[1].name, Human[1].id, Human[1].age, Human[1].phoneNumber);
+    printf("이름 : %s, 학번 : %d, 나이 : %d, 전화번호 : %s\n",
+           Human[2].name, Human[2].id, Human[2].age, Human[2].phoneNumber);
+    
+    return 0;
+}
+
+/// 구조체 포인터 [1]
+typedef struct
+{
+    int id;
+    int age;
+}StudentData;
+
+int main()
+{
+    StudentData User;
+    StudentData* ptr;
+    
+    ptr = &User;
+    
+    (*ptr).id = 202412345; // User.id = 202412345;
+    (*ptr).age = 20;
+    
+    printf("학번 : %d, 나이 : %d\n", User.id, User.age);
+    
+    return 0;
+}
+
+/// 구조체 포인터 [2]
+typedef struct
+{
+    int id;
+    int age;
+}StudentData;
+
+int main()
+{
+    StudentData User;
+    StudentData* ptr;
+    
+    ptr = &User;
+    
+    //(*ptr).id = 202412345;
+    //(*ptr).age = 20;
+    ptr->id = 202412345; // 포인터가 가리키는 값
+    ptr->age = 20;
+    
+    printf("학번 : %d, 나이 : %d\n", User.id, User.age);
+    
+    return 0;
+}
+ */
+
+/// 중첩 구조체
+typedef struct
+{
+    char Tname[15];
+    int Tid;
+    int Tage;
+    char TphoneNumber[14];
+}TeacherData;
+
+typedef struct
+{
+    char name[15];
+    int id;
+    int age;
+    char phoneNumber[14];
+    
+    TeacherData teacher;
+}StudentData;
+
+int main()
+{
+    StudentData student;
+    TeacherData teacher;
+    
+    student.teacher.Tage = 40;
+    teacher.Tage = 50;
+    
+    return 0;
+}
+
+/// 자기 참조 구조체 (Self Referential Structure)
