@@ -195,7 +195,6 @@ int main()
     
     return 0;
 }
- */
 
 /// 중첩 구조체
 typedef struct
@@ -226,5 +225,12 @@ int main()
     
     return 0;
 }
+ */
 
 /// 자기 참조 구조체 (Self Referential Structure)
+typedef struct
+{
+    char name[15];
+    int age;
+    struct StudentData* ptr;
+}StudentData;
