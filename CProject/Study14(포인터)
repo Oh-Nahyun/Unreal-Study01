@@ -351,6 +351,7 @@ int main()
 }
  */
 
+/*
 /// 이중 포인터와 포인터 배열
 /// 두 번 재활용을 위함 & 메모리와 빠른 속도를 위함
 /// (DirectX에서 주로 사용)
@@ -369,3 +370,46 @@ int main()
     
     return 0;
 }
+ */
+
+/*
+/// 포인터 배열
+int main()
+{
+    int num1 = 10;
+    int num2 = 20;
+    int num3 = 30;
+    
+    int *pArr[3]; // 주소값 배열
+    pArr[0] = &num1;
+    pArr[1] = &num2;
+    pArr[2] = &num3;
+    
+    for (int i = 0; i < 3; i++)
+    {
+        printf("pArr[%d] : %d\n", i, *pArr[i]);
+    }
+    
+    return 0;
+}
+*/
+
+/*
+/// 내용 정리
+int main()
+{
+    int arr[5] = {1, 3, 5, 7, 9};
+    double arr2[5] = {1.1, 3.2, 5.3, 7.4, 9.5};
+    int* arrPtr = arr;
+    double* arrPtr2 = arr2;
+    
+    printf("%d %lf %d %d\n", *arrPtr, *arrPtr2, arrPtr, arrPtr2);
+    
+    (*arrPtr)++;    // 포인터 값 증가
+    *arrPtr2++;     // 포인터 주소 증가
+    
+    printf("%d %lf %d %d\n", *arrPtr, *arrPtr2, arrPtr, arrPtr2);
+    
+    return 0;
+}
+ */
