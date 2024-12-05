@@ -1,0 +1,163 @@
+//
+//  Study17(주사위게임).cpp
+//  CProject
+//
+//  Created by 오나현 on 12/5/24.
+//
+
+/// 머드 게임 (Multi User Dungeon)
+/// = 텍스트 게임 (게임북 역사 후 온라인 게임)
+
+/// 게임
+/// 1. 조작
+/// 2. 경쟁
+/// 3. 결과(승/패) -> 과정(무승부)
+/// 4. 판정, 기술(컴퓨터)
+
+/// ==================================================
+
+/// 주사위 게임
+/// 플레이어 vs 컴퓨터 (1인용)
+/// 1. 주사위를 번갈아 던지고 (2번)
+/// 2. 세번째 던진 주사위의 눈의 값이 더 큰쪽이 승리하는 게임
+
+/// 프로그램 실행 -> 바로 게임 실행
+/// * 게임 설명 : Printf 를 통해 게임 소개와 가이드
+/// * 게임 진행 : scanf 를 통해 사용자의 입력을 유도
+///          1번을 입력하면 주사위를 굴린다.
+///          2번을 입력하면 현재 점수, 게임 상황을 보여준다.
+/// * 플레이어나 컴퓨터가 주사위를 굴릴 때마다 각각의 변수에 값을 더하거나 저장
+/// * 주사위를 3번 굴려 게임이 끝나면 게임 결과를 보여주고, 승패 결정
+
+/// * [이슈] 랜덤 데이터를 가져와야 한다.
+
+/*
+#include <stdio.h>
+#include <stdlib.h> // srand(); rand();
+#include <time.h>   // time();
+
+int main()
+{
+    srand(time(NULL));
+    
+    int random;
+    int sort = 0;
+    
+    while (sort < 10)
+    {
+        random = rand();
+        printf("%d\n", random);
+        sort++;
+    }
+    
+    return 0;
+}
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// 게임 설명 출력 함수
+void gameInfo();
+
+// 플레이 선택 화면 출력 함수
+void playInfo();
+
+// 현재 점수 화면 출력 함수
+void checkScore();
+
+// 게임 종료 및 엔딩 화면 출력 함수
+void showEnding(int, int);
+
+int main()
+{
+    // 데이터 선언
+    int diceCount = 0;  // 현재 몇번이나 주사위를 굴렸는지 확인하는 변수
+    int diceEnd = 3;    // 총 주사위를 몇번 굴릴지 결정하는 변수
+    int mScore = 0;     // 플레이어의 점수
+    int cScore = 0;     // 컴퓨터의 점수
+    int selection = 0;  // 플레이어가 게임 진행 중 몇번을 선택했는지 입력받는 변수
+    
+    // 랜덤 초기화
+    srand((unsigned int)time(NULL));
+    
+    // 게임 설명 출력
+    printf("[ 주사위 게임 Start ]\n\n");
+    gameInfo();
+    
+    // 게임 반복
+    while (diceCount < diceEnd)
+    {
+        // 플레이 설명 출력
+        playInfo();
+        
+        // 입력
+        scanf("%d", &selection);
+        
+        // 주사위 굴리기
+        if (selection == 1)
+        {
+            printf("[Round %d]", diceCount + 1);
+            
+            //printf("Player Dice : ", rand());
+            mScore += rand();
+            
+            //printf("Computer Dice : ", rand());
+            cScore += rand();
+        }
+        else if (selection == 2)
+        {
+            checkScore();                   // 현재 점수 확인
+        }
+        else
+        {
+            printf("잘못 입력 하셨습니다.\n");   // 예외 처리
+            
+        }
+        
+        diceCount++;
+    }
+    
+    // 결과 출력
+    showEnding(10, 10);
+    
+    return 0;
+}
+
+void gameInfo()
+{
+    printf("==================================================\n");
+    printf("| 게임 설명                                         |\n");
+    printf("==================================================\n");
+    printf("| 1. 주사위를 총 3번 굴린다.                           |\n");
+    printf("| 2. 전체 주사위 눈의 합이 더 높은 사람이 이기게 됩니다.      |\n");
+    printf("|                                                 |\n");
+    printf("| 주사위 게임을 시작 하겠습니다.                          |\n");
+    printf("==================================================\n");
+}
+
+void playInfo()
+{
+    printf("==================================================\n");
+    printf("| 주사위를 굴려주세요                                  |\n");
+    printf("==================================================\n");
+    printf("| 1번 : 주사위 굴리기                                 |\n");
+    printf("| 2번 : 현재 눈의 합 확인하기                           |\n");
+    printf("==================================================\n");
+}
+
+void checkScore()
+{
+    
+}
+
+void showEnding(int mScore, int cScore)
+{
+    printf("==================================================\n");
+    printf("| << 최종 점수 >>                                   |\n");
+    printf("==================================================\n");
+    printf("| 플레이어의 점수 : %d                                |\n", mScore);
+    printf("| 컴퓨터의 점수 : %d                                 |\n", cScore);
+    printf("==================================================\n");
+}
