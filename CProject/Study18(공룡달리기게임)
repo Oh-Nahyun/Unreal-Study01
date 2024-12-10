@@ -1,0 +1,90 @@
+//
+//  Study18(공룡달리기게임).cpp
+//  CProject
+//
+//  Created by 오나현 on 12/10/24.
+//
+
+#include <stdio.h>
+#include <stdlib.h>     //
+#include <time.h>
+#include <unistd.h>
+#include <conio.h>      // 콘솔의 커서 위치 조작
+
+#define DINO_BOTTON_Y 12 // 초기값
+#define TREE_BOTTON_Y 20
+#define TREE_BOTTON_X 45
+
+// 0. 게임 스타트.. 화면(씬) 게임 설명. 일시정지.
+void StartGameInfo();
+
+// 1. 게임 플레이.. GameMain();
+
+// 2. 게임 오버.. 점수 표시
+void DrawGameOver(int score);
+
+// [게임 시스템] 게임 함수
+void SetConsoleView();                  // 화면 조정
+void GotoXY(int x, int y);              // 콘솔 좌표 이동
+bool isCollision(int treeX, int dinoY); // 충돌 처리 함수
+int GetKeyDown();                       // 키보드 값을 처리
+
+// [게임 그래픽] 게임 함수
+void DrawDino(int dinoY);               // 공룡을 그리는 함수
+void DrawTree(int treeX);               // 나무를 그리는 함수
+
+int main()
+{
+    // 콘솔 화면 수정 (사이즈 조정) setting
+    SetConsoleView();
+    
+    // 게임 로고 & 시작 대기 화면
+    StartGameInfo();
+    
+    // 게임 데이터
+    bool isJumping = false;             // 캐릭터 상태 // 플래그 개념
+    bool isBottom = false;
+    int gravity = 3;
+    
+    int dinoY = DINO_BOTTON_Y;          // 12
+    int treeX = TREE_BOTTON_X;          // 45
+    
+    // 게임 데이터 (스코어)
+    int score = 0;                      // 게임 점수
+    clock_t start, curr;                // 변수 초기화
+    start = clock();                    // 시작 시간 초기화
+    
+    // 게임 반복 처리
+    while (true)
+    {
+        // 게임 오버 판정 (충돌 되었는지 체크)
+        
+        // 점프 부분 (데이터 처리)
+        
+        // 점프 부분 (위치 처리)
+        
+        // 나무 부분 (위치 처리)
+        
+        // 공룡 그리기
+        
+        // 나무 그리기
+        
+        // 점수 처리 (생존 시간 = 점수)
+        
+        // 개발용 출력
+        
+        // 점수 증가 처리 (1초마다 점수 증가)
+        
+        // 화면 갱신
+        
+        // UI 출력
+        
+    }
+    
+    // 게임 오버 메뉴 호출
+    
+    // 일시정지
+    system("pause");
+    
+    return 0;
+}
