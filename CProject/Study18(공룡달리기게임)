@@ -45,6 +45,7 @@ int main()
     bool isJumping = false;             // 캐릭터 상태 // 플래그 개념
     bool isBottom = false;
     int gravity = 3;
+    //bool legFlag = true;              // 이 위치가 좋긴 하지만 DrawDino()에 넣어둠
     
     int dinoY = DINO_BOTTON_Y;          // 12
     int treeX = TREE_BOTTON_X;          // 45
@@ -57,28 +58,81 @@ int main()
     // 게임 반복 처리
     while (true)
     {
-        // 게임 오버 판정 (충돌 되었는지 체크)
+        /// 게임 오버 판정 (충돌 되었는지 체크)
+        if (isCollision(treeX, dinoY))
+        {
+            break;      // 충돌이 감지되면 while 루프 중지
+        }
         
-        // 점프 부분 (데이터 처리)
+        /// 점프 부분 (데이터 처리)
+        // 조작 : z키가 눌렸고, 공룡 상태가 바닥인 경우
+        if (GetKeyDown() == 'z' && isBottom)
+        {
+            isJumping = true;
+            isBottom = false;
+        }
         
-        // 점프 부분 (위치 처리)
+        /// 점프 부분 (위치 처리)
+        // 점프 중이라면 y값 감소 & 점프가 끝났다면 y값 증가
+        if (isJumping)
+        {
+            dinoY -= gravity;       // 상승
+        }
+        else
+        {
+            dinoY += gravity;       // 하강
+        }
         
-        // 나무 부분 (위치 처리)
+        // y값이 계속해서 증가하는 것(하강)을 막기 위해 바닥을 지정
+        if (dinoY >= DINO_BOTTON_Y)
+        {
+            dinoY = DINO_BOTTON_Y;
+            isBottom = true;        // 바닥에 공룡이 존재하는 경우, isBottom 플래그를 true 처리 (state 처리 부분)
+        }
         
-        // 공룡 그리기
+        // 점프의 맨 위를 찍으면 (정상; Apex) 점프가 끝난 상황
+        if (dinoY <= 3)
+        {
+            isJumping = false;
+        }
         
-        // 나무 그리기
+        /// 나무 부분 (위치 처리)
+        treeX -= 2;
+        if (treeX <= 0)
+        {
+            treeX = TREE_BOTTON_X; // 45
+        }
         
-        // 점수 처리 (생존 시간 = 점수)
+        /// 렌더링 부분 ==============================
         
-        // 개발용 출력
+        /// 공룡 그리기
+        DrawDino(dinoY);
         
-        // 점수 증가 처리 (1초마다 점수 증가)
+        /// 나무 그리기
+        DrawTree(treeX);
         
-        // 화면 갱신
+        /// 점수 처리 (생존 시간 = 점수)
+        curr = clock();
         
-        // UI 출력
+        /// 개발용 출력 (게임 로그; 확인용)
+        // GotoXY(0, 2);
+        // printf("시간 : %d, 점수 : %d", curr, score);
         
+        /// 점수 증가 처리 (1초마다 점수 증가)
+        if ((curr - start) / CLOCKS_PER_SEC >= 1) // 1초가 된 경우
+        {
+            score++;            // 1초마다 점수 증가 (+1)
+            start = clock();    // 시작 시간 초기화
+        }
+        
+        /// 화면 갱신 (refresh)
+        //Sleep(500);           // 테스트를 위해 느리게 조정
+        Sleep(100);
+        system("cls");
+        
+        /// UI 출력
+        GotoXY(22, 1);                  // 커서를 화면 한가운데 위쪽에 배치 출력한다.
+        printf("Score : %d", score);    // 점수 출력
     }
     
     // 게임 오버 메뉴 호출
@@ -87,4 +141,114 @@ int main()
     system("pause");
     
     return 0;
+}
+
+// 게임 시작 화면
+void StartGameInfo()
+{
+    system("cls");
+    int x = 17;
+    int y = 7;
+    GotoXY(x, y);       printf("=============================="); // 30개
+    GotoXY(x, y + 1);   printf("====== D I N O  G A M E ======");
+    GotoXY(x, y + 2);   printf("==============================");
+    
+    GotoXY(x, y + 5);   printf("PRESS ANY KEY : JUMP KEY = z");
+    
+    GotoXY(x - 1, y + 10);  system("pause");
+    
+    system("cls");
+}
+
+void DrawGameOver(int score)
+{
+    
+}
+
+// 화면 조정
+void SetConsoleView()
+{
+    system("cls");                          // clear screen
+    system("mode con:cols=100 lines=25");   // 콘솔창 사이즈 (윈도우(운영체제) 버전에 따라 다름.)
+    system("title DINODINO");               // 제목 설정
+}
+
+// 커서의 위치를 이동하는 함수
+void GotoXY(int x, int y)
+{
+    COORD Pos; // 구조체
+    Pos.X = x * 2;
+    Pos.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
+}
+
+// 충돌을 처리하는 함수
+// (출돌 했으면 True, 아니면 False를 리턴)
+bool isCollision(int treeX, int dinoY)
+{
+    // 나무의 x가 공룡의 몸쪽에 있는 경우
+    // 공룡의 y, 높이가 충분치 않다면, 충돌로 처리
+    
+    // 개발용 출력
+    
+    // 충돌이 되면 True를 리턴
+    {
+        
+        
+        return true;
+    }
+    
+    return false;
+}
+
+// 조작 함수 (키보드 값 처리)
+int GetKeyDown()
+{
+    if (_kbhit() != 0)          // 키보드가 눌린 경우
+    {
+        int temp = _getch();    // 눌린 키보드 값
+        return temp;
+    }
+    return 0;
+}
+
+void DrawDino(int dinoY)
+{
+    GotoXY(0, dinoY);               // 상하 이동만 처리
+    static bool legFlag = true;     // 함수 내부에서만 사용하는 경우, 편의성을 위해 사용
+    
+    //printf("$$$$$$$$$$$$$$$$$$"); // 기본 18개
+    printf("         $$$$$$   \n");
+    printf("        $$ $$$$$$ \n");
+    printf("        $$$$$$$$$$\n");
+    printf("$       $$$       \n");
+    printf("$$      $$$$$$$$  \n");
+    printf("$$$    $$$$$$     \n");
+    printf(" $$$$$$$$$$$$$$$$ \n");
+    printf("  $$$$$$$$$$$$$$  \n");
+    printf("   $$$$$$$$       \n");
+    printf("    $$$$$$$$      \n");
+    
+    if (legFlag)
+    {
+        printf("    $$    $$$     \n");
+        printf("    $$$           \n");
+        legFlag = false;
+    }
+    else
+    {
+        printf("    $$$   $$     \n");
+        printf("          $$$    \n");
+        legFlag = true;
+    }
+    //legFlag = !legFlag;     // 자동 반전
+}
+
+void DrawTree(int treeX)
+{
+    GotoXY(treeX, TREE_BOTTON_Y);       printf("####");
+    GotoXY(treeX, TREE_BOTTON_Y + 1);   printf("####");
+    GotoXY(treeX, TREE_BOTTON_Y + 2);   printf(" || ");
+    GotoXY(treeX, TREE_BOTTON_Y + 3);   printf(" || ");
+    GotoXY(treeX, TREE_BOTTON_Y + 4);   printf(" || ");
 }
