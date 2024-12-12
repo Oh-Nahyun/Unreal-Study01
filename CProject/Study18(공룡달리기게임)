@@ -136,6 +136,7 @@ int main()
     }
     
     // 게임 오버 메뉴 호출
+    DrawGameOver(score);
     
     // 일시정지
     system("pause");
@@ -162,7 +163,18 @@ void StartGameInfo()
 
 void DrawGameOver(int score)
 {
+    system("cls");
+    int x = 17;
+    int y = 7;
+    GotoXY(x, y);       printf("=============================="); // 30개
+    GotoXY(x, y + 1);   printf("====== G A M E  O V E R ======");
+    GotoXY(x, y + 2);   printf("==============================");
     
+    GotoXY(x, y + 5);   printf("SCORE : %d", score);
+    
+    GotoXY(x - 1, y + 10);  system("pause");
+    
+    system("cls");
 }
 
 // 화면 조정
@@ -190,10 +202,15 @@ bool isCollision(int treeX, int dinoY)
     // 공룡의 y, 높이가 충분치 않다면, 충돌로 처리
     
     // 개발용 출력
+    GotoXY(0, 0);
+    printf("treeX : %d, dinoY : %d", treeX, dinoY);
     
     // 충돌이 되면 True를 리턴
+    if (treeX <= 8 && treeX >= 4 && dinoY > 8)
     {
-        
+        // 개발용 출력
+        GotoXY(0, 1);
+        printf("충돌 감지!");
         
         return true;
     }
